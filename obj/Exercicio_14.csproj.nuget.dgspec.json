@@ -1,0 +1,63 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\#ADS CURSO\\#OTTO\\Fundamentos de Programas\\#EXERCÍCIOS\\Classes\\Exercicio_14\\Exercicio_14.csproj": {}
+  },
+  "projects": {
+    "D:\\#ADS CURSO\\#OTTO\\Fundamentos de Programas\\#EXERCÍCIOS\\Classes\\Exercicio_14\\Exercicio_14.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\#ADS CURSO\\#OTTO\\Fundamentos de Programas\\#EXERCÍCIOS\\Classes\\Exercicio_14\\Exercicio_14.csproj",
+        "projectName": "Exercicio_14",
+        "projectPath": "D:\\#ADS CURSO\\#OTTO\\Fundamentos de Programas\\#EXERCÍCIOS\\Classes\\Exercicio_14\\Exercicio_14.csproj",
+        "packagesPath": "C:\\Users\\Delon\\.nuget\\packages\\",
+        "outputPath": "D:\\#ADS CURSO\\#OTTO\\Fundamentos de Programas\\#EXERCÍCIOS\\Classes\\Exercicio_14\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Delon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
