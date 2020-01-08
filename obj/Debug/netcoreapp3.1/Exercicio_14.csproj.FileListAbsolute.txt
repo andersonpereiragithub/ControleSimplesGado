@@ -9,3 +9,14 @@ D:\#ADS CURSO\#OTTO\Fundamentos de Programas\#EXERCÍCIOS\Classes\Exercicio_14\o
 D:\#ADS CURSO\#OTTO\Fundamentos de Programas\#EXERCÍCIOS\Classes\Exercicio_14\obj\Debug\netcoreapp3.1\Exercicio_14.AssemblyInfo.cs
 D:\#ADS CURSO\#OTTO\Fundamentos de Programas\#EXERCÍCIOS\Classes\Exercicio_14\obj\Debug\netcoreapp3.1\Exercicio_14.dll
 D:\#ADS CURSO\#OTTO\Fundamentos de Programas\#EXERCÍCIOS\Classes\Exercicio_14\obj\Debug\netcoreapp3.1\Exercicio_14.pdb
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\obj\Debug\netcoreapp3.1\Exercicio_14.csprojAssemblyReference.cache
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\obj\Debug\netcoreapp3.1\Exercicio_14.AssemblyInfoInputs.cache
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\obj\Debug\netcoreapp3.1\Exercicio_14.AssemblyInfo.cs
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\obj\Debug\netcoreapp3.1\Exercicio_14.dll
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\obj\Debug\netcoreapp3.1\Exercicio_14.pdb
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\bin\Debug\netcoreapp3.1\Exercicio_14.exe
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\bin\Debug\netcoreapp3.1\Exercicio_14.deps.json
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\bin\Debug\netcoreapp3.1\Exercicio_14.runtimeconfig.json
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\bin\Debug\netcoreapp3.1\Exercicio_14.runtimeconfig.dev.json
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\bin\Debug\netcoreapp3.1\Exercicio_14.dll
+C:\Curso_ADS\GitHub\Exerc_14\exercicio14\bin\Debug\netcoreapp3.1\Exercicio_14.pdb

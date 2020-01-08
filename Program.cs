@@ -4,65 +4,67 @@ namespace Exercicio_14
 {
     class Program
     {
-        const int GADOS = 3;
-        static void imprimirQntdeLeite(Gados[] vet)
+        const int NUM_GADOS = 3;
+        static void imprimirQntdeLeite(Gados[] gado)
         {
             int i;
             double soma = 0;
 
-            for (i = 0; i < vet.Length; i++)
+            for (i = 0; i < gado.Length; i++)
             {
-                soma += vet[i].getLeite();
+                soma += gado[i].getLeite();
             }
             Console.Write("\nConsumo total de Leite na Fazenda por semana foi de: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("{0}", soma);
             Console.ResetColor();
-            Console.WriteLine();
+            Console.WriteLine("\nAperte uma tecla para continuar...");
+            Console.ReadKey();
 
-            abrirMenu();
+            abrirMenu(gado);
         }
-static void imprimirQntdeAlimento(Gados[] vet)
+static void imprimirQntdeAlimento(Gados[] gado)
         {
             int i;
             double soma = 0;
 
-            for (i = 0; i < vet.Length; i++)
+            for (i = 0; i < gado.Length; i++)
             {
-                soma += vet[i].getAlimento();
+                soma += gado[i].getAlimento();
             }
             Console.Write("\nConsumo total de Alimento na Fazenda por semana foi de: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("{0}", soma);
             Console.ResetColor();
-            Console.WriteLine();
+            Console.WriteLine("\nAperte uma tecla para continuar...");
+            Console.ReadKey();
 
-            abrirMenu();
+            abrirMenu(gado);
         }
-        public static void instaciaGado()
+        public static void instanciaGado(Gados[] gado)
         {
             int i;
-            Gados[] gado = new Gados[GADOS];
 
             for (i = 0; i < gado.Length; i++)
             {
                 Console.WriteLine("{0}o gado:", i + 1);
                 gado[i] = obterNovoGado();
             }
-            abrirMenu();
+            abrirMenu(gado);
         }
         static Gados obterNovoGado()
         {
             int mesNascimento, anoNascimento;
-
-            Gados g = new Gados();
+            Gados gado = new Gados();
 
             Console.Write("Código: ");
-            g.setCodigo(Convert.ToInt32(Console.ReadLine()));
+            gado.setCodigo(Convert.ToInt32(Console.ReadLine()));
 
             Console.Write("Leite: ");
-            g.setLeite(Convert.ToDouble(Console.ReadLine()));
+            gado.setLeite(Convert.ToDouble(Console.ReadLine()));
 
             Console.Write("Alimento: ");
-            g.setAlimento(Convert.ToDouble(Console.ReadLine()));
+            gado.setAlimento(Convert.ToDouble(Console.ReadLine()));
 
             Console.Write("Mês nascimento: ");
             mesNascimento = Convert.ToInt32(Console.ReadLine());
@@ -70,11 +72,11 @@ static void imprimirQntdeAlimento(Gados[] vet)
             Console.Write("Ano nascimento: ");
             anoNascimento = Convert.ToInt32(Console.ReadLine());
 
-            g.setIdade(mesNascimento, anoNascimento);
+            gado.setIdade(mesNascimento, anoNascimento);
 
-            return g;
+            return gado;
         }
-        public static void abrirMenu()
+        public static void abrirMenu(Gados[] gado)
         {
             char ch;
         
@@ -102,10 +104,10 @@ static void imprimirQntdeAlimento(Gados[] vet)
             switch (ch)
             {
                 case 'a':
-                    instaciaGado();
+                    instanciaGado(gado);
                     break;
                 case 'A':
-                    instaciaGado();
+                    instanciaGado(gado);
                     break;
 
                 case 'b':
@@ -113,11 +115,11 @@ static void imprimirQntdeAlimento(Gados[] vet)
                     break;
 
                 case 'c':
-                    //imprimirQntdeLeite(VERIFICAR COMO ENVIAR PARÂMETRO);
+                    imprimirQntdeLeite(gado);
                     break;
 
                 case 'd':
-                    //imprimirQntdeAlimento(VERIFICAR COMO ENVIAR PARÂMETRO);
+                    imprimirQntdeAlimento(gado);
                     break;
 
                 case 'e':
@@ -139,7 +141,9 @@ static void imprimirQntdeAlimento(Gados[] vet)
         }
         static void Main(string[] args)
         {
-            abrirMenu();
+            Gados[] gado = new Gados[NUM_GADOS];
+
+            abrirMenu(gado);
         }
     }
 }
