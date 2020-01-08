@@ -5,6 +5,42 @@ namespace Exercicio_14
     class Program
     {
         const int NUM_GADOS = 3;
+        static void preencheCampoAbate(Gados[] gado)
+        {
+            for (int i = 0; i < gado.Length; i++)
+            {
+                gado[i].setAbate(gado[i].getLeite(), gado[i].getIdade(), gado[i].getAlimento());
+            }
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("\nClassificação de ABATE concluída com sucesso!");
+            Console.ResetColor();
+            Console.WriteLine("\nAperte uma tecla para continuar...");
+            Console.ReadKey();
+
+            abrirMenu(gado);
+        }
+        static void imprimeNumAbate(Gados[] gado)
+        {
+            int i;
+            double soma = 0;
+
+            for (i = 0; i < gado.Length; i++)
+            {
+                gado[i].setAbate(gado[i].getLeite(), gado[i].getIdade(), gado[i].getAlimento());
+                if (gado[i].getAbate() == "SIM")
+                {
+                    soma++;
+                }
+            }
+            Console.Write("\nTotal de gado para ABATE é: ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("{0}", soma);
+            Console.ResetColor();
+            Console.WriteLine("\nAperte uma tecla para continuar...");
+            Console.ReadKey();
+
+            abrirMenu(gado);
+        }
         static void imprimirQntdeLeite(Gados[] gado)
         {
             int i;
@@ -23,7 +59,7 @@ namespace Exercicio_14
 
             abrirMenu(gado);
         }
-static void imprimirQntdeAlimento(Gados[] gado)
+        static void imprimirQntdeAlimento(Gados[] gado)
         {
             int i;
             double soma = 0;
@@ -47,7 +83,7 @@ static void imprimirQntdeAlimento(Gados[] gado)
 
             for (i = 0; i < gado.Length; i++)
             {
-                Console.WriteLine("{0}o gado:", i + 1);
+                Console.WriteLine("\n{0}o gado:", i + 1);
                 gado[i] = obterNovoGado();
             }
             abrirMenu(gado);
@@ -79,7 +115,7 @@ static void imprimirQntdeAlimento(Gados[] gado)
         public static void abrirMenu(Gados[] gado)
         {
             char ch;
-        
+
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("========= MENU ========");
             Console.ResetColor();
@@ -111,14 +147,23 @@ static void imprimirQntdeAlimento(Gados[] gado)
                     break;
 
                 case 'b':
-                    //verificaAbate();
+                    preencheCampoAbate(gado);
+                    break;
+                case 'B':
+                    preencheCampoAbate(gado);
                     break;
 
                 case 'c':
                     imprimirQntdeLeite(gado);
                     break;
+                case 'C':
+                    imprimirQntdeLeite(gado);
+                    break;
 
                 case 'd':
+                    imprimirQntdeAlimento(gado);
+                    break;
+                case 'D':
                     imprimirQntdeAlimento(gado);
                     break;
 
@@ -129,6 +174,10 @@ static void imprimirQntdeAlimento(Gados[] gado)
                     break;
 
                 case 'g':
+                    imprimeNumAbate(gado);
+                    break;
+                case 'G':
+                    imprimeNumAbate(gado);
                     break;
 
                 case 'h':
