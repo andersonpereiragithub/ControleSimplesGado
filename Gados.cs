@@ -49,7 +49,6 @@ namespace Exercicio_14
                     abate = "NÃO";
                 }
             }
-
             public int getIdade()
             {
                 return idade;

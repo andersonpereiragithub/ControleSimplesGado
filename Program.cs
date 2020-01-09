@@ -22,7 +22,7 @@ namespace Exercicio_14
         static void imprimeNumAbate(Gados[] gado)
         {
             int i;
-            double soma = 0;
+            int soma = 0;
 
             for (i = 0; i < gado.Length; i++)
             {
@@ -41,6 +41,48 @@ namespace Exercicio_14
 
             abrirMenu(gado);
         }
+        static void imprimirQntdeLeitePosAbate(Gados[] gado)
+        {
+            int i;
+            double soma = 0;
+
+            for (i = 0; i < gado.Length; i++)
+            {
+                if(gado[i].getAbate() == "NÃO")
+                {
+                soma += gado[i].getLeite();
+                }
+            }
+            Console.Write("\nProdução total de Leite na Fazenda por semana após o ABATE foi de: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("{0} Litros.", soma);
+            Console.ResetColor();
+            Console.WriteLine("\nAperte uma tecla para continuar...");
+            Console.ReadKey();
+
+            abrirMenu(gado);
+        }
+        static void imprimirQntdeAlimentoPosAbate(Gados[] gado)
+        {
+            int i;
+            double soma = 0;
+
+            for (i = 0; i < gado.Length; i++)
+            {
+                if(gado[i].getAbate() == "NÃO")
+                {
+                soma += gado[i].getAlimento();
+                }
+            }
+            Console.Write("\nConsumo total de Alimento na Fazenda por semana após o ABATE foi de: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("{0} Litros.", soma);
+            Console.ResetColor();
+            Console.WriteLine("\nAperte uma tecla para continuar...");
+            Console.ReadKey();
+
+            abrirMenu(gado);
+        }
         static void imprimirQntdeLeite(Gados[] gado)
         {
             int i;
@@ -50,9 +92,9 @@ namespace Exercicio_14
             {
                 soma += gado[i].getLeite();
             }
-            Console.Write("\nConsumo total de Leite na Fazenda por semana foi de: ");
+            Console.Write("\nProdução total de Leite na Fazenda por semana foi de: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("{0}", soma);
+            Console.WriteLine("{0} Litros.", soma);
             Console.ResetColor();
             Console.WriteLine("\nAperte uma tecla para continuar...");
             Console.ReadKey();
@@ -70,7 +112,7 @@ namespace Exercicio_14
             }
             Console.Write("\nConsumo total de Alimento na Fazenda por semana foi de: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("{0}", soma);
+            Console.WriteLine("{0} Kg.", soma);
             Console.ResetColor();
             Console.WriteLine("\nAperte uma tecla para continuar...");
             Console.ReadKey();
@@ -121,11 +163,10 @@ namespace Exercicio_14
             Console.ResetColor();
             Console.WriteLine("(a) - Cadastrar Gado");
             Console.WriteLine("(b) - Preencher o campo Abate");
-            Console.WriteLine("(c) - Imprimrir a quantidade total de LEITE produzida por semana na fazenda");
-            Console.WriteLine("(d) - Imprimrir a quantidade total de ALIMENTO consumido na fazenda o Abate");
-            //Console.WriteLine("(e) - Imprimrir a quantidade total de leite produzido por semana, após o Abate");
-            //Console.WriteLine("(f) - Imprimrir a quantidade total de alimento que vai ser consumido por semana na fazenda,");
-            //Console.WriteLine("      após o Abate");
+            Console.WriteLine("(c) - Imprimrir a quantidade total de LEITE produzida por semana");
+            Console.WriteLine("(d) - Imprimrir a quantidade total de ALIMENTO consumido por semana");
+            Console.WriteLine("(e) - Imprimrir a quantidade total de LEITE produzido por semana, após o Abate");
+            Console.WriteLine("(f) - Imprimrir a quantidade total de ALIMENTO que vai ser consumido por semana na fazenda após o Abate");
             Console.WriteLine("(g) - Imprimrir número de cabeças de gado que irão para abate");
             Console.WriteLine("(h) - Sair do Menu");
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -168,9 +209,17 @@ namespace Exercicio_14
                     break;
 
                 case 'e':
+                    imprimirQntdeLeitePosAbate(gado);
+                    break;
+                case 'E':
+                    imprimirQntdeLeitePosAbate(gado);
                     break;
 
                 case 'f':
+                    imprimirQntdeAlimentoPosAbate(gado);
+                    break;
+                case 'F':
+                    imprimirQntdeAlimentoPosAbate(gado);
                     break;
 
                 case 'g':
@@ -181,10 +230,8 @@ namespace Exercicio_14
                     break;
 
                 case 'h':
-                    Environment.Exit(0);
                     break;
                 case 'H':
-                    Environment.Exit(0);
                     break;
             }
         }
