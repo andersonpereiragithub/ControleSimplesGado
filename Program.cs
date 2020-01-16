@@ -26,7 +26,6 @@ namespace Exercicio_14
 
             for (i = 0; i < gado.Length; i++)
             {
-                gado[i].setAbate(gado[i].getLeite(), gado[i].getIdade(), gado[i].getAlimento());
                 if (gado[i].getAbate() == "SIM")
                 {
                     soma++;
@@ -76,7 +75,7 @@ namespace Exercicio_14
             }
             Console.Write("\nConsumo total de Alimento na Fazenda por semana após o ABATE foi de: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("{0} Litros.", soma);
+            Console.WriteLine("{0} Kg.", soma);
             Console.ResetColor();
             Console.WriteLine("\nAperte uma tecla para continuar...");
             Console.ReadKey();
