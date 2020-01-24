@@ -11,6 +11,7 @@ namespace Exercicio_14
             {
                 gado[i].setAbate(gado[i].getLeite(), gado[i].getIdade(), gado[i].getAlimento());
             }
+            Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.Write("\nClassificação de ABATE concluída com sucesso!");
             Console.ResetColor();
@@ -26,18 +27,30 @@ namespace Exercicio_14
 
             for (i = 0; i < gado.Length; i++)
             {
-                gado[i].setAbate(gado[i].getLeite(), gado[i].getIdade(), gado[i].getAlimento());
                 if (gado[i].getAbate() == "SIM")
                 {
                     soma++;
                 }
             }
-            Console.Write("\nTotal de gado para ABATE é: ");
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("{0}", soma);
-            Console.ResetColor();
-            Console.WriteLine("\nAperte uma tecla para continuar...");
-            Console.ReadKey();
+            if (soma > 0)
+            {
+                Console.Clear();
+                Console.Write("\nTotal de gado para ABATE é: ");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("{0}", soma);
+                Console.ResetColor();
+                Console.WriteLine("\nAperte uma tecla para continuar...");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\nATENÇÃO! Não foi preenchido o Campo Abate!");
+                Console.ResetColor();
+                Console.WriteLine("\nAperte uma tecla para continuar...");
+                Console.ReadKey();
+            }
 
             abrirMenu(gado);
         }
@@ -48,18 +61,30 @@ namespace Exercicio_14
 
             for (i = 0; i < gado.Length; i++)
             {
-                if(gado[i].getAbate() == "NÃO")
+                if (gado[i].getAbate() == "NÃO")
                 {
-                soma += gado[i].getLeite();
+                    soma += gado[i].getLeite();
                 }
             }
-            Console.Write("\nProdução total de Leite na Fazenda por semana após o ABATE foi de: ");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("{0} Litros.", soma);
-            Console.ResetColor();
-            Console.WriteLine("\nAperte uma tecla para continuar...");
-            Console.ReadKey();
-
+            if (soma > 0)
+            {
+                Console.Clear();
+                Console.Write("\nProdução total de Leite na Fazenda por semana após o ABATE foi de: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("{0} Litros.", soma);
+                Console.ResetColor();
+                Console.WriteLine("\nAperte uma tecla para continuar...");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\nATENÇÃO! Não foi preenchido o Campo Abate!");
+                Console.ResetColor();
+                Console.WriteLine("\nAperte uma tecla para continuar...");
+                Console.ReadKey();
+            }
             abrirMenu(gado);
         }
         static void imprimirQntdeAlimentoPosAbate(Gados[] gado)
@@ -69,18 +94,31 @@ namespace Exercicio_14
 
             for (i = 0; i < gado.Length; i++)
             {
-                if(gado[i].getAbate() == "NÃO")
+                if (gado[i].getAbate() == "NÃO")
                 {
-                soma += gado[i].getAlimento();
+                    soma += gado[i].getAlimento();
                 }
             }
-            Console.Write("\nConsumo total de Alimento na Fazenda por semana após o ABATE foi de: ");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("{0} Litros.", soma);
-            Console.ResetColor();
-            Console.WriteLine("\nAperte uma tecla para continuar...");
-            Console.ReadKey();
-
+            if (soma > 0)
+            {
+                Console.Clear();
+                Console.Write("\nConsumo total de Alimento na Fazenda por semana após o ABATE foi de: ");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("{0} Litros.", soma);
+                Console.ResetColor();
+                Console.WriteLine("\nAperte uma tecla para continuar...");
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("\nATENÇÃO! Não foi preenchido o Campo Abate!");
+                Console.ResetColor();
+                Console.WriteLine("\nAperte uma tecla para continuar...");
+                Console.ReadKey();
+            }
+            Console.Clear();
             abrirMenu(gado);
         }
         static void imprimirQntdeLeite(Gados[] gado)
@@ -92,6 +130,7 @@ namespace Exercicio_14
             {
                 soma += gado[i].getLeite();
             }
+            Console.Clear();
             Console.Write("\nProdução total de Leite na Fazenda por semana foi de: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("{0} Litros.", soma);
@@ -99,6 +138,7 @@ namespace Exercicio_14
             Console.WriteLine("\nAperte uma tecla para continuar...");
             Console.ReadKey();
 
+            Console.Clear();
             abrirMenu(gado);
         }
         static void imprimirQntdeAlimento(Gados[] gado)
@@ -110,6 +150,7 @@ namespace Exercicio_14
             {
                 soma += gado[i].getAlimento();
             }
+            Console.Clear();
             Console.Write("\nConsumo total de Alimento na Fazenda por semana foi de: ");
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("{0} Kg.", soma);
@@ -117,6 +158,7 @@ namespace Exercicio_14
             Console.WriteLine("\nAperte uma tecla para continuar...");
             Console.ReadKey();
 
+            Console.Clear();
             abrirMenu(gado);
         }
         public static void instanciaGado(Gados[] gado)
@@ -230,13 +272,16 @@ namespace Exercicio_14
                     break;
 
                 case 'h':
+                    Console.Clear();
                     break;
                 case 'H':
+                    Console.Clear();
                     break;
             }
         }
         static void Main(string[] args)
         {
+            Console.Clear();
             Gados[] gado = new Gados[NUM_GADOS];
 
             abrirMenu(gado);
