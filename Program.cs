@@ -99,6 +99,7 @@ namespace Exercicio_14
                     soma += gado[i].getAlimento();
                 }
             }
+<<<<<<< HEAD
             if (soma > 0)
             {
                 Console.Clear();
@@ -119,6 +120,15 @@ namespace Exercicio_14
                 Console.ReadKey();
             }
             Console.Clear();
+=======
+            Console.Write("\nConsumo total de Alimento na Fazenda por semana após o ABATE foi de: ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("{0} Kg.", soma);
+            Console.ResetColor();
+            Console.WriteLine("\nAperte uma tecla para continuar...");
+            Console.ReadKey();
+
+>>>>>>> 3cacb9d8bd53c395cbdc929f7c997431782b31ed
             abrirMenu(gado);
         }
         static void imprimirQntdeLeite(Gados[] gado)
