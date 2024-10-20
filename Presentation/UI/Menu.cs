@@ -1,18 +1,21 @@
 ﻿using System;
 using Exercicio_14.Application.Interfaces;
 using Exercicio_14.Domain.Entities;
+using Exercicio_14.Presentation.Handlers;
 
 namespace Exercicio_14.Presentation.UI
 {
     public class Menu
     {
         private readonly IGadoService _gadoService;
+        private readonly CadastroGadoHandler _cadastroGadoHandler;
         private const int NUM_GADOS = 3;
         private Gado[] gado = new Gado[NUM_GADOS];
 
         public Menu(IGadoService gadoService)
         {
             _gadoService = gadoService;
+            _cadastroGadoHandler = new CadastroGadoHandler(); // Injeção da classe responsável pelo cadastro
         }
 
         public void AbrirMenu()
@@ -69,32 +72,8 @@ namespace Exercicio_14.Presentation.UI
             for (int i = 0; i < gado.Length; i++)
             {
                 Console.WriteLine($"Cadastro do {i + 1}º gado:");
-                gado[i] = ObterNovoGado();
+                gado[i] = _cadastroGadoHandler.ObterNovoGado();
             }
-        }
-
-        private Gado ObterNovoGado()
-        {
-            var gado = new Gado();
-
-            Console.Write("Código: ");
-            gado.Codigo = int.Parse(Console.ReadLine());
-
-            Console.Write("Leite: ");
-            gado.Leite = double.Parse(Console.ReadLine());
-
-            Console.Write("Alimento: ");
-            gado.Alimento = double.Parse(Console.ReadLine());
-
-            Console.Write("Mês de nascimento: ");
-            int mesNasc = int.Parse(Console.ReadLine());
-
-            Console.Write("Ano de nascimento: ");
-            int anoNasc = int.Parse(Console.ReadLine());
-
-            gado.CalcularIdade(mesNasc, anoNasc, DateTime.Now.Month, DateTime.Now.Year);
-
-            return gado;
         }
     }
 }
