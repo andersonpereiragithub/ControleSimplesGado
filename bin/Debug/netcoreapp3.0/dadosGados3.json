@@ -1,0 +1,34 @@
+[
+  {
+    "Codigo": 1,
+    "Nome": "Mimosa",
+    "Idade": 14,
+    "Leite": 10,
+    "Alimento": 10,
+    "Abate": "NÃO"
+  },
+  {
+    "Codigo": 2,
+    "Nome": "Macacheira",
+    "Idade": 4,
+    "Leite": 20,
+    "Alimento": 20,
+    "Abate": "NÃO"
+  },
+  {
+    "Codigo": 3,
+    "Nome": "Flor",
+    "Idade": 1,
+    "Leite": 30,
+    "Alimento": 30,
+    "Abate": "NÃO"
+  },
+  {
+    "Codigo": 4,
+    "Nome": "Medrosa",
+    "Idade": 10,
+    "Leite": 40,
+    "Alimento": 40,
+    "Abate": "NÃO"
+  }
+]

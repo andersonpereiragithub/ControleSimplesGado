@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using Exercicio_14.Application.Interfaces;
 using Exercicio_14.Domain.Entities;
 using Exercicio_14.Presentation.Handlers;
+
 
 namespace Exercicio_14.Presentation.UI
 {
@@ -10,7 +13,7 @@ namespace Exercicio_14.Presentation.UI
         private readonly IGadoService _gadoService;
         private readonly CadastroGadoHandler _cadastroGadoHandler;
         private const int NUM_GADOS = 3;
-        private Gado[] gado = new Gado[NUM_GADOS];
+        public List<Gado> listaDeGados = new List<Gado>();
 
         public Menu(IGadoService gadoService)
         {
@@ -26,13 +29,13 @@ namespace Exercicio_14.Presentation.UI
                 Console.Clear();
                 Console.WriteLine("========= MENU ========");
                 Console.WriteLine("(\u001b[31ma\u001b[0m) - Cadastrar Gado");
-                Console.WriteLine("(\u001b[31mb\u001b[0m) - Preencher o campo Abate");
+                Console.WriteLine("(\u001b[31mb\u001b[0m) - Listar todos os Cadastros\n");
                 Console.WriteLine("      \u001b[33mRelatórios:\u001b[0m");
-                Console.WriteLine("                |__(\u001b[31mc\u001b[0m) - Imprimir quantidade total de LEITE produzida");
-                Console.WriteLine("                |__(\u001b[31md\u001b[0m) - Imprimir quantidade total de ALIMENTO consumido");
-                Console.WriteLine("                |__(\u001b[31me\u001b[0m) - Imprimir quantidade total de LEITE após Abate");
-                Console.WriteLine("                |__(\u001b[31mf\u001b[0m) - Imprimir quantidade total de ALIMENTO após Abate");
-                Console.WriteLine("                |__(\u001b[31mg\u001b[0m) - Imprimir número de gados para ABATE");
+                Console.WriteLine("                |__(\u001b[31m1\u001b[0m) - Imprimir quantidade total de LEITE produzida");
+                Console.WriteLine("                |__(\u001b[31m2\u001b[0m) - Imprimir quantidade total de ALIMENTO consumido");
+                Console.WriteLine("                |__(\u001b[31m3\u001b[0m) - Imprimir quantidade total de LEITE após Abate");
+                Console.WriteLine("                |__(\u001b[31m4\u001b[0m) - Imprimir quantidade total de ALIMENTO após Abate");
+                Console.WriteLine("                |__(\u001b[31m5\u001b[0m) - Imprimir número de gados para ABATE");
                 Console.WriteLine("(\u001b[31mh\u001b[0m) - Sair");
                 Console.WriteLine("=======================");
                 Console.Write("\u001b[31mOpção: \u001b[0m");
@@ -44,22 +47,28 @@ namespace Exercicio_14.Presentation.UI
                         InstanciarGados();
                         break;
                     case 'b':
-                        _gadoService.PreencherCampoAbate(gado);
+                        _cadastroGadoHandler.ListarGados();
                         break;
                     case 'c':
-                        Console.WriteLine($"Total de leite: {_gadoService.CalcularTotalLeite(gado)} litros");
+                        _cadastroGadoHandler.SalvarGadosEmJson(listaDeGados);
                         break;
                     case 'd':
-                        Console.WriteLine($"Total de alimento: {_gadoService.CalcularTotalAlimento(gado)} kg");
+                        _cadastroGadoHandler.CarregarGadosDeJson();
                         break;
-                    case 'e':
-                        Console.WriteLine($"Total de leite após abate: {_gadoService.CalcularTotalLeite(gado, true)} litros");
+                    case '1':
+                        //Console.WriteLine($"Total de leite: {_gadoService.CalcularTotalLeite(gado)} litros");
                         break;
-                    case 'f':
-                        Console.WriteLine($"Total de alimento após abate: {_gadoService.CalcularTotalAlimento(gado, true)} kg");
+                    case '2':
+                        //Console.WriteLine($"Total de alimento: {_gadoService.CalcularTotalAlimento(gado)} kg");
                         break;
-                    case 'g':
-                        Console.WriteLine($"Total de gados para abate: {_gadoService.ContarGadoParaAbate(gado)}");
+                    case '3':
+                        //Console.WriteLine($"Total de leite após abate: {_gadoService.CalcularTotalLeite(gado, true)} litros");
+                        break;
+                    case '4':
+                        //Console.WriteLine($"Total de alimento após abate: {_gadoService.CalcularTotalAlimento(gado, true)} kg");
+                        break;
+                    case '5':
+                        //Console.WriteLine($"Total de gados para abate: {_gadoService.ContarGadoParaAbate(gado)}");
                         break;
                 }
                 Console.WriteLine("\nPressione qualquer tecla para voltar ao menu...");
@@ -69,11 +78,8 @@ namespace Exercicio_14.Presentation.UI
 
         private void InstanciarGados()
         {
-            for (int i = 0; i < gado.Length; i++)
-            {
-                Console.WriteLine($"Cadastro do {i + 1}º gado:");
-                gado[i] = _cadastroGadoHandler.ObterNovoGado();
-            }
+            Console.WriteLine($"Cadastro do gado:");
+            _cadastroGadoHandler.CadastrarNovoGado();
         }
     }
 }

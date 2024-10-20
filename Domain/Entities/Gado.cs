@@ -7,10 +7,11 @@ namespace Exercicio_14.Domain.Entities
     public class Gado
     {
         public int Codigo { get; set; }
+        public string Nome { get; set; }
         public int Idade { get; set; }
         public double Leite { get; set; }
         public double Alimento { get; set; }
-        public string Abate { get; private set; }
+        public string Abate{ get; set; }
 
         public void DefinirAbate()
         {
