@@ -8,9 +8,9 @@ namespace Exercicio_14.Application.Interfaces
     public interface IGadoService
     {
         void PreencherCampoAbate(Gado[] gado);
-        double CalcularTotalLeite(Gado[] gado, bool posAbate = false);
-        double CalcularTotalAlimento(Gado[] gado, bool posAbate = false);
-        int ContarGadoParaAbate(Gado[] gado);
+        double CalcularTotalLeite(bool posAbate = false);
+        double CalcularTotalAlimento(bool posAbate = false);
+        int ContarGadoParaAbate();
     }
 }
 

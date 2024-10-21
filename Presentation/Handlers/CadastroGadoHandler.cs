@@ -86,7 +86,7 @@ namespace Exercicio_14.Presentation.Handlers
         }
 
         // Método para carregar os gados de um arquivo JSON
-        public List<Gado> CarregarGadosDeJson()
+        public static List<Gado> CarregarGadosDeJson()
         {
             if (File.Exists("dadosGados.json"))
             {

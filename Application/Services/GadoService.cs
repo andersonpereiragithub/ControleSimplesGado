@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Exercicio_14.Application.Interfaces;
 using Exercicio_14.Domain.Entities;
+using Exercicio_14.Presentation.Handlers;
 
 namespace Exercicio_14.Application.Services
 {
@@ -16,10 +17,12 @@ namespace Exercicio_14.Application.Services
             }
         }
 
-        public double CalcularTotalLeite(Gado[] gado, bool posAbate = false)
+        public double CalcularTotalLeite(bool posAbate = false)
         {
+            List<Gado> gados = CadastroGadoHandler.CarregarGadosDeJson();
+
             double totalLeite = 0;
-            foreach (var g in gado)
+            foreach (var g in gados)
             {
                 if (!posAbate || g.Abate == "NÃO")
                 {
@@ -29,10 +32,12 @@ namespace Exercicio_14.Application.Services
             return totalLeite;
         }
 
-        public double CalcularTotalAlimento(Gado[] gado, bool posAbate = false)
+        public double CalcularTotalAlimento(bool posAbate = false)
         {
+            List<Gado> gados = CadastroGadoHandler.CarregarGadosDeJson();
+
             double totalAlimento = 0;
-            foreach (var g in gado)
+            foreach (var g in gados)
             {
                 if (!posAbate || g.Abate == "NÃO")
                 {
@@ -42,10 +47,12 @@ namespace Exercicio_14.Application.Services
             return totalAlimento;
         }
 
-        public int ContarGadoParaAbate(Gado[] gado)
+        public int ContarGadoParaAbate()
         {
+            List<Gado> gados = CadastroGadoHandler.CarregarGadosDeJson();
+
             int total = 0;
-            foreach (var g in gado)
+            foreach (var g in gados)
             {
                 if (g.Abate == "SIM")
                 {
