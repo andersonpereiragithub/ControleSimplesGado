@@ -9,33 +9,56 @@ namespace Exercicio_14.Presentation.Handlers
 {
     public class CadastroGadoHandler
     {
-        // Método para obter um novo gado
         public Gado ObterNovoGado()
         {
             var gado = new Gado();
 
-            Console.Write("Código: ");
-            gado.Codigo = int.Parse(Console.ReadLine());
+            gado.Codigo = LerInteiro("Código");
+            gado.Nome = LerString("Nome");
+            gado.Leite = LerDouble("Leite");
+            gado.Alimento = LerDouble("Alimento");
 
-            Console.Write("Nome: ");
-            gado.Nome = Console.ReadLine();
-
-            Console.Write("Leite: ");
-            gado.Leite = double.Parse(Console.ReadLine());
-
-            Console.Write("Alimento: ");
-            gado.Alimento = double.Parse(Console.ReadLine());
-
-            Console.Write("Mês de nascimento: ");
-            int mesNasc = int.Parse(Console.ReadLine());
-
-            Console.Write("Ano de nascimento: ");
-            int anoNasc = int.Parse(Console.ReadLine());
+            int mesNasc = LerInteiro("Mês de nascimento", 1, 12);
+            int anoNasc = LerInteiro("Ano de nascimento", 1900, DateTime.Now.Year);
 
             gado.DefinirAbate();
             gado.CalcularIdade(mesNasc, anoNasc, DateTime.Now.Month, DateTime.Now.Year);
 
             return gado;
+        }
+
+        private int LerInteiro(string campo, int min = int.MinValue, int max = int.MaxValue)
+        {
+            int valor;
+            while (true)
+            {
+                Console.Write($"{campo}: ");
+                if (int.TryParse(Console.ReadLine(), out valor) && valor >= min && valor <= max)
+                {
+                    return valor;
+                }
+                Console.WriteLine($"Entrada inválida. Informe um valor inteiro entre {min} e {max}.");
+            }
+        }
+
+        private double LerDouble(string campo)
+        {
+            double valor;
+            while (true)
+            {
+                Console.Write($"{campo}: ");
+                if (double.TryParse(Console.ReadLine(), out valor))
+                {
+                    return valor;
+                }
+                Console.WriteLine("Entrada inválida. Informe um valor numérico.");
+            }
+        }
+
+        private string LerString(string campo)
+        {
+            Console.Write($"{campo}: ");
+            return Console.ReadLine();
         }
 
         public void ListarGados()
