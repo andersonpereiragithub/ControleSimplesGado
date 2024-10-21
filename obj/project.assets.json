@@ -111,24 +111,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Delon\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Aderson\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ADS_CURSO\\OTTO\\Gados_GitHub\\exercicio14\\EXERCICIO14.csproj",
+      "projectUniqueName": "C:\\Users\\Aderson\\Source\\Repos\\andersonpereiragithub\\ControleSimplesGado\\EXERCICIO14.csproj",
       "projectName": "EXERCICIO14",
-      "projectPath": "D:\\ADS_CURSO\\OTTO\\Gados_GitHub\\exercicio14\\EXERCICIO14.csproj",
-      "packagesPath": "C:\\Users\\Delon\\.nuget\\packages\\",
-      "outputPath": "D:\\ADS_CURSO\\OTTO\\Gados_GitHub\\exercicio14\\obj\\",
+      "projectPath": "C:\\Users\\Aderson\\Source\\Repos\\andersonpereiragithub\\ControleSimplesGado\\EXERCICIO14.csproj",
+      "packagesPath": "C:\\Users\\Aderson\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Aderson\\Source\\Repos\\andersonpereiragithub\\ControleSimplesGado\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Delon\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Aderson\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
