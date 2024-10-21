@@ -15,15 +15,16 @@ namespace Exercicio_14.Presentation.UI
         private readonly CadastroGadoHandler _cadastroGadoHandler;
         public List<Gado> listaDeGados = new List<Gado>();
 
-        public Menu(IGadoService gadoService)
+        public Menu(IGadoService gadoService, CadastroGadoHandler cadastroGadoHandler)
         {
-            _gadoService = gadoService;
-            _cadastroGadoHandler = new CadastroGadoHandler();
+            _gadoService = gadoService ?? throw new ArgumentNullException(nameof(gadoService));
+            _cadastroGadoHandler = cadastroGadoHandler ?? throw new ArgumentNullException(nameof(cadastroGadoHandler));
+            InicializarAcoesMenu();
         }
 
         private Dictionary<char, Action> acoesMenu;
 
-        public Menu()
+        private void InicializarAcoesMenu()
         {
             acoesMenu = new Dictionary<char, Action>
             {
@@ -77,7 +78,6 @@ namespace Exercicio_14.Presentation.UI
             Console.WriteLine("      |__(\u001b[31m5\u001b[0m) - Número de gados para ABATE\n");
             Console.WriteLine("(\u001b[31mh\u001b[0m) - Sair");
             Console.WriteLine("========================================\n");
-            Console.Write("\u001b[31mOpção: \u001b[0m");
         }
         private void ImprimirRelatorioLeite(bool aposAbate)
         {

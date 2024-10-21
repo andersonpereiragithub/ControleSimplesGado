@@ -12,7 +12,7 @@ namespace Exercicio_14
             var serviceProvider = DependencyInjection.ConfigureServices();
 
             var menu = serviceProvider.GetService<Menu>();
-            menu.ExibirMenu();
-         }
+            menu.AbrirMenu();
+        }
     }
 }
