@@ -1,1 +1,15 @@
+# Arquivos de configuração do Visual Studio
 .vs/
+*.user
+*.suo
+
+# Pastas de build
+bin/
+obj/
+
+# Arquivos temporários do sistema operacional
+*.log
+*.tmp
+*.bak
+Thumbs.db
+ehthumbs.db
