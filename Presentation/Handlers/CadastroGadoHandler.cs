@@ -2,13 +2,23 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using Exercicio_14.Application.Interfaces;
 using Exercicio_14.Domain.Entities;
 using EXERCICIO14.Presentation.UI;
+using Exercicio_14.Application.Services;
+using System.Reflection.Emit;
 
 namespace Exercicio_14.Presentation.Handlers
 {
     public class CadastroGadoHandler
     {
+        private readonly IGadoService _gadoService;
+
+        public CadastroGadoHandler(IGadoService gadoService)
+        {
+            _gadoService = gadoService;
+        }
+
         public Gado ObterNovoGado()
         {
             var gado = new Gado();
@@ -91,6 +101,7 @@ namespace Exercicio_14.Presentation.Handlers
                 tabela.DesenharTabela();
             }
         }
+
         public void CadastrarNovoGado()
         {
             List<Gado> gados = CarregarGadosDeJson();  // Carrega gados existentes
@@ -119,5 +130,31 @@ namespace Exercicio_14.Presentation.Handlers
             return new List<Gado>(); // Retorna lista vazia se o arquivo não existir
         }
 
+        public void ImprimirRelatorioLeite(bool aposAbate)
+        {
+            var resultadoRelatorio = _gadoService.CalcularTotalLeite(aposAbate);
+            TabelaConsole tabela = new TabelaConsole();
+
+            Console.WriteLine($"Total de leite {(aposAbate ? "após abate" : "")}: {resultadoRelatorio.TotalLeite} litros");
+
+            if (resultadoRelatorio.GadosNaoAbatidos.Count > 0)
+            {
+                Console.WriteLine("\nLista de Gados Não Abatidos:");
+                tabela.DefinirCabecalho("NOME", "LEITE");
+                foreach (var gado in resultadoRelatorio.GadosNaoAbatidos)
+                {
+                    string nome = gado.Nome.ToString();
+                    string leite = gado.Leite.ToString();
+
+                    tabela.AdicionarLinha(nome, leite);
+                }
+
+                tabela.DesenharTabela();
+            }
+            else
+            {
+                Console.WriteLine("\nNenhum gado não abatido encontrado.");
+            }
+        }
     }
 }

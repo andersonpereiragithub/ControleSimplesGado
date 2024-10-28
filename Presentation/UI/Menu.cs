@@ -30,9 +30,9 @@ namespace Exercicio_14.Presentation.UI
             {
                 { (char)OpcaoMenu.CadastrarGado, InstanciarGados },
                 { (char)OpcaoMenu.ListarCadastros, _cadastroGadoHandler.ListarGados },
-                { (char)OpcaoMenu.RelatorioLeite, () => ImprimirRelatorioLeite(false) },
+                { (char)OpcaoMenu.RelatorioLeite, () => _cadastroGadoHandler.ImprimirRelatorioLeite(false) },
                 { (char)OpcaoMenu.RelatorioAlimento, () => ImprimirRelatorioAlimento(false) },
-                { (char)OpcaoMenu.RelatorioLeiteAposAbate, () => ImprimirRelatorioLeite(true) },
+                { (char)OpcaoMenu.RelatorioLeiteAposAbate, () => _cadastroGadoHandler.ImprimirRelatorioLeite(true) },
                 { (char)OpcaoMenu.RelatorioAlimentoAposAbate, () => ImprimirRelatorioAlimento(true) },
                 { (char)OpcaoMenu.GadosParaAbate, ImprimirGadosParaAbate }
             };
@@ -79,11 +79,11 @@ namespace Exercicio_14.Presentation.UI
             Console.WriteLine("(\u001b[31mh\u001b[0m) - Sair");
             Console.WriteLine("========================================\n");
         }
-        private void ImprimirRelatorioLeite(bool aposAbate)
-        {
-            var totalLeite = _gadoService.CalcularTotalLeite(aposAbate);
-            Console.WriteLine($"Total de leite {(aposAbate ? "após abate" : "")}: {totalLeite} litros");
-        }
+        //private void ImprimirRelatorioLeite(bool aposAbate)
+        //{
+        //    var totalLeite = _gadoService.CalcularTotalLeite(aposAbate);
+        //    Console.WriteLine($"Total de leite {(aposAbate ? "após abate" : "")}: {totalLeite} litros");
+        //}
 
         private void ImprimirRelatorioAlimento(bool aposAbate)
         {
