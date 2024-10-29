@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Exercicio_14.Application.Interfaces;
+﻿using Exercicio_14.Application.Interfaces;
 using Exercicio_14.Domain.Entities;
 using Exercicio_14.Presentation.Handlers;
-using Exercicio_14.Presentation.UI;
 using EXERCICIO14.Presentation.UI;
+using System.Collections.Generic;
+using System;
 
 namespace Exercicio_14.Presentation.UI
 {
@@ -45,8 +43,10 @@ namespace Exercicio_14.Presentation.UI
                 ExibirMenu();
                 Console.Write("\u001b[31mOpção: \u001b[0m");
                 opcao = Console.ReadLine().ToLower()[0];
+                
+                bool aOpcaoDoUsuarioExiste = acoesMenu.ContainsKey(opcao);
 
-                if (acoesMenu.ContainsKey(opcao))
+                if (aOpcaoDoUsuarioExiste)
                 {
                     acoesMenu[opcao].Invoke();
                 }
@@ -76,15 +76,10 @@ namespace Exercicio_14.Presentation.UI
             Console.WriteLine("      |__(\u001b[31m3\u001b[0m) - Total de LEITE após Abate");
             Console.WriteLine("      |__(\u001b[31m4\u001b[0m) - Total de ALIMENTO após Abate");
             Console.WriteLine("      |__(\u001b[31m5\u001b[0m) - Número de gados para ABATE\n");
-            Console.WriteLine("(\u001b[31mh\u001b[0m) - Sair");
+            Console.WriteLine("(\u001b[31m9\u001b[0m) - Sair");
             Console.WriteLine("========================================\n");
         }
-        //private void ImprimirRelatorioLeite(bool aposAbate)
-        //{
-        //    var totalLeite = _gadoService.CalcularTotalLeite(aposAbate);
-        //    Console.WriteLine($"Total de leite {(aposAbate ? "após abate" : "")}: {totalLeite} litros");
-        //}
-
+        
         private void ImprimirRelatorioAlimento(bool aposAbate)
         {
             var totalAlimento = _gadoService.CalcularTotalAlimento(aposAbate);

@@ -112,14 +112,12 @@ namespace Exercicio_14.Presentation.Handlers
             SalvarGadosEmJson(gados);                  // Salva a lista atualizada no arquivo JSON
         }
 
-        // Método para salvar a lista de gados em um arquivo JSON
         public void SalvarGadosEmJson(List<Gado> gados)
         {
             string jsonString = JsonSerializer.Serialize(gados);
             File.WriteAllText("dadosGados.json", jsonString);
         }
 
-        // Método para carregar os gados de um arquivo JSON
         public static List<Gado> CarregarGadosDeJson()
         {
             if (File.Exists("dadosGados.json"))
@@ -127,7 +125,7 @@ namespace Exercicio_14.Presentation.Handlers
                 string jsonString = File.ReadAllText("dadosGados.json");
                 return JsonSerializer.Deserialize<List<Gado>>(jsonString);
             }
-            return new List<Gado>(); // Retorna lista vazia se o arquivo não existir
+            return new List<Gado>(); 
         }
 
         public void ImprimirRelatorioLeite(bool aposAbate)
@@ -141,6 +139,7 @@ namespace Exercicio_14.Presentation.Handlers
             {
                 Console.WriteLine("\nLista de Gados Não Abatidos:");
                 tabela.DefinirCabecalho("NOME", "LEITE");
+
                 foreach (var gado in resultadoRelatorio.GadosNaoAbatidos)
                 {
                     string nome = gado.Nome.ToString();

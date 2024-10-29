@@ -55,7 +55,19 @@ namespace EXERCICIO14.Presentation.UI
         {
             for (int i = 0; i < linha.Length; i++)
             {
-                Console.Write("| " + linha[i].PadRight(larguraColunas[i]) + " ");
+                bool alinharDireitaSeValor = cabecalho[i] == "LEITE" ||
+                                             cabecalho[i] == "LEITE L" ||
+                                             cabecalho[i] == "ALIMENTO KG" ||
+                                             cabecalho[i] == "IDADE";
+                
+                if (alinharDireitaSeValor)
+                {
+                    Console.Write("| " + linha[i].PadLeft(larguraColunas[i]) + " ");
+                }
+                else
+                {
+                    Console.Write("| " + linha[i].PadRight(larguraColunas[i]) + " ");
+                }
             }
             Console.WriteLine("|");
         }

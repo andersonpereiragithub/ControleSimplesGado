@@ -13,6 +13,6 @@ namespace EXERCICIO14.Presentation.UI
         RelatorioLeiteAposAbate = '3',
         RelatorioAlimentoAposAbate = '4',
         GadosParaAbate = '5',
-        Sair = 'h'
+        Sair = '9'
     }
 }
