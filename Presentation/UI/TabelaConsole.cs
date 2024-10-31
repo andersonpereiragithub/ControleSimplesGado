@@ -57,6 +57,7 @@ namespace EXERCICIO14.Presentation.UI
             {
                 bool alinharDireitaSeValor = cabecalho[i] == "LEITE" ||
                                              cabecalho[i] == "LEITE L" ||
+                                             cabecalho[i] == "ALIMENTO" ||
                                              cabecalho[i] == "ALIMENTO KG" ||
                                              cabecalho[i] == "IDADE";
                 

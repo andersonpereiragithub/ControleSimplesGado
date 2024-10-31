@@ -29,10 +29,10 @@ namespace Exercicio_14.Presentation.UI
                 { (char)OpcaoMenu.CadastrarGado, InstanciarGados },
                 { (char)OpcaoMenu.ListarCadastros, _cadastroGadoHandler.ListarGados },
                 { (char)OpcaoMenu.RelatorioLeite, () => _cadastroGadoHandler.ImprimirRelatorioLeite(false) },
-                { (char)OpcaoMenu.RelatorioAlimento, () => ImprimirRelatorioAlimento(false) },
+                { (char)OpcaoMenu.RelatorioAlimento, () => _cadastroGadoHandler.ImprimirRelatorioAlimento(false) },
                 { (char)OpcaoMenu.RelatorioLeiteAposAbate, () => _cadastroGadoHandler.ImprimirRelatorioLeite(true) },
-                { (char)OpcaoMenu.RelatorioAlimentoAposAbate, () => ImprimirRelatorioAlimento(true) },
-                { (char)OpcaoMenu.GadosParaAbate, ImprimirGadosParaAbate }
+                { (char)OpcaoMenu.RelatorioAlimentoAposAbate, () => _cadastroGadoHandler.ImprimirRelatorioAlimento(true) },
+                { (char)OpcaoMenu.GadosParaAbate, _cadastroGadoHandler.ImprimirRelatorioAbate }
             };
         }
         public void AbrirMenu()
@@ -69,28 +69,17 @@ namespace Exercicio_14.Presentation.UI
             Console.Clear();
             Console.WriteLine("\n================= MENU =================\n");
             Console.WriteLine("(\u001b[31ma\u001b[0m) - Cadastrar Gado");
-            Console.WriteLine("(\u001b[31mb\u001b[0m) - Listar todos os Cadastros\n");
             Console.WriteLine("      |-\u001b[33mImprimir Relatórios:\u001b[0m");
-            Console.WriteLine("      |__(\u001b[31m1\u001b[0m) - Total de LEITE produzido");
-            Console.WriteLine("      |__(\u001b[31m2\u001b[0m) - Total de ALIMENTO consumido");
+            Console.WriteLine("      |--(\u001b[31m1\u001b[0m) - Listar todos os Cadastros");
+            Console.WriteLine("      |__(\u001b[31m2\u001b[0m) - Total de LEITE produzido");
             Console.WriteLine("      |__(\u001b[31m3\u001b[0m) - Total de LEITE após Abate");
-            Console.WriteLine("      |__(\u001b[31m4\u001b[0m) - Total de ALIMENTO após Abate");
-            Console.WriteLine("      |__(\u001b[31m5\u001b[0m) - Número de gados para ABATE\n");
-            Console.WriteLine("(\u001b[31m9\u001b[0m) - Sair");
+            Console.WriteLine("      |__(\u001b[31m4\u001b[0m) - Total de ALIMENTO consumido");
+            Console.WriteLine("      |__(\u001b[31m5\u001b[0m) - Total de ALIMENTO após Abate");
+            Console.WriteLine("      |__(\u001b[31m6\u001b[0m) - Número de gados para ABATE\n");
+            Console.WriteLine("(\u001b[31m0\u001b[0m) - Sair");
             Console.WriteLine("========================================\n");
         }
         
-        private void ImprimirRelatorioAlimento(bool aposAbate)
-        {
-            var totalAlimento = _gadoService.CalcularTotalAlimento(aposAbate);
-            Console.WriteLine($"Total de alimento {(aposAbate ? "após abate" : "")}: {totalAlimento} kg");
-        }
-
-        private void ImprimirGadosParaAbate()
-        {
-            Console.WriteLine($"Total de gados para abate: {_gadoService.ContarGadoParaAbate()}");
-        }
-
         private void InstanciarGados()
         {
             Console.WriteLine($"Cadastro do gado:");

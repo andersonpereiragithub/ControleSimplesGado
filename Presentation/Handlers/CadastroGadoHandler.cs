@@ -81,10 +81,8 @@ namespace Exercicio_14.Presentation.Handlers
             }
             else
             {
-
                 TabelaConsole tabela = new TabelaConsole();
                 tabela.DefinirCabecalho("ID", "NOME", "LEITE L", "ALIMENTO KG", "IDADE", "ABATE");
-
 
                 foreach (var gado in gados)
                 {
@@ -104,12 +102,12 @@ namespace Exercicio_14.Presentation.Handlers
 
         public void CadastrarNovoGado()
         {
-            List<Gado> gados = CarregarGadosDeJson();  // Carrega gados existentes
-            Gado novoGado = ObterNovoGado();           // Cadastra um novo gado
+            List<Gado> gados = CarregarGadosDeJson();  
+            Gado novoGado = ObterNovoGado();           
 
-            gados.Add(novoGado);                       // Adiciona à lista de gados
+            gados.Add(novoGado);                       
 
-            SalvarGadosEmJson(gados);                  // Salva a lista atualizada no arquivo JSON
+            SalvarGadosEmJson(gados);                  
         }
 
         public void SalvarGadosEmJson(List<Gado> gados)
@@ -125,7 +123,7 @@ namespace Exercicio_14.Presentation.Handlers
                 string jsonString = File.ReadAllText("dadosGados.json");
                 return JsonSerializer.Deserialize<List<Gado>>(jsonString);
             }
-            return new List<Gado>(); 
+            return new List<Gado>();
         }
 
         public void ImprimirRelatorioLeite(bool aposAbate)
@@ -146,6 +144,60 @@ namespace Exercicio_14.Presentation.Handlers
                     string leite = gado.Leite.ToString();
 
                     tabela.AdicionarLinha(nome, leite);
+                }
+
+                tabela.DesenharTabela();
+            }
+            else
+            {
+                Console.WriteLine("\nNenhum gado não abatido encontrado.");
+            }
+        }
+        public void ImprimirRelatorioAlimento(bool aposAbate)
+        {
+            var resultadoRelatorio = _gadoService.CalcularTotalAlimento(aposAbate);
+            TabelaConsole tabela = new TabelaConsole();
+
+            Console.WriteLine($"Total de alimento {(aposAbate ? "após abate" : "")}: {resultadoRelatorio.TotalAlimento} alimentos");
+
+            if (resultadoRelatorio.GadosNaoAbatidos.Count > 0)
+            {
+                Console.WriteLine("\nLista de consumo dos Gados");
+                tabela.DefinirCabecalho("NOME", "ALIMENTO");
+
+                foreach (var gado in resultadoRelatorio.GadosNaoAbatidos)
+                {
+                    string nome = gado.Nome.ToString();
+                    string alimento = gado.Alimento.ToString();
+
+                    tabela.AdicionarLinha(nome, alimento);
+                }
+
+                tabela.DesenharTabela();
+            }
+            else
+            {
+                Console.WriteLine("\nNenhum gado não abatido encontrado.");
+            }
+        }
+        public void ImprimirRelatorioAbate()
+        {
+            var resultadoRelatorio = _gadoService.ContarGadoParaAbate();
+            var totalAbatidos = 0;
+
+            TabelaConsole tabela = new TabelaConsole();
+
+            Console.WriteLine($"Total de Gados são {resultadoRelatorio.TotalAbatido} ABATIDOS.");
+
+            if (resultadoRelatorio.GadosAbatidos.Count > 0)
+            {
+                Console.WriteLine("\nLista de Gados ABATIDOS");
+                tabela.DefinirCabecalho("NOME");
+
+                foreach (var gado in resultadoRelatorio.GadosAbatidos)
+                {
+                    string nome = gado.Nome.ToString();
+                    tabela.AdicionarLinha(nome);
                 }
 
                 tabela.DesenharTabela();

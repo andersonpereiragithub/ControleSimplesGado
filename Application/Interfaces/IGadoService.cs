@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Application.Services;
 using Exercicio_14.Domain.Entities;
+using EXERCICIO14.Application.Services;
 
 namespace Exercicio_14.Application.Interfaces
 {
@@ -10,8 +11,8 @@ namespace Exercicio_14.Application.Interfaces
     {
         void PreencherCampoAbate(Gado[] gado);
         LeiteReportResult CalcularTotalLeite(bool posAbate = false);
-        double CalcularTotalAlimento(bool posAbate = false);
-        int ContarGadoParaAbate();
+        AlimentoReportResult CalcularTotalAlimento(bool posAbate = false);
+        GadosAbatidosReportResult ContarGadoParaAbate();
     }
 }
 

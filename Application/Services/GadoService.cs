@@ -5,6 +5,7 @@ using Application.Services;
 using Exercicio_14.Application.Interfaces;
 using Exercicio_14.Domain.Entities;
 using Exercicio_14.Presentation.Handlers;
+using EXERCICIO14.Application.Services;
 
 namespace Exercicio_14.Application.Services
 {
@@ -27,7 +28,7 @@ namespace Exercicio_14.Application.Services
 
             foreach (var g in gados)
             {
-                if (posAbate || g.Abate == "NÃO")
+                if (!posAbate || g.Abate == "NÃO")
                 {
                     totalLeite += g.Leite;
                     gadosNaoAbatidos.Add(g);
@@ -36,34 +37,40 @@ namespace Exercicio_14.Application.Services
             return new LeiteReportResult(totalLeite, gadosNaoAbatidos);
         }
 
-        public double CalcularTotalAlimento(bool posAbate = false)
+        public AlimentoReportResult CalcularTotalAlimento(bool posAbate = false)
         {
             List<Gado> gados = CadastroGadoHandler.CarregarGadosDeJson();
 
             double totalAlimento = 0;
+            var gadosNaoAbatidos = new List<Gado>();
+
             foreach (var g in gados)
             {
                 if (!posAbate || g.Abate == "NÃO")
                 {
                     totalAlimento += g.Alimento;
+                    gadosNaoAbatidos.Add(g);
                 }
             }
-            return totalAlimento;
+            return new AlimentoReportResult(totalAlimento, gadosNaoAbatidos);
         }
 
-        public int ContarGadoParaAbate()
+        public GadosAbatidosReportResult ContarGadoParaAbate()
         {
             List<Gado> gados = CadastroGadoHandler.CarregarGadosDeJson();
 
-            int total = 0;
+            int totalAbate = 0;
+            var gadosAbatidos = new List<Gado>();
+
             foreach (var g in gados)
             {
                 if (g.Abate == "SIM")
                 {
-                    total++;
+                    totalAbate++;
+                    gadosAbatidos.Add(g);
                 }
             }
-            return total;
+            return new GadosAbatidosReportResult(totalAbate, gadosAbatidos);
         }
     }
 }
