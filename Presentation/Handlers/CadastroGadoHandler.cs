@@ -7,6 +7,7 @@ using Exercicio_14.Domain.Entities;
 using EXERCICIO14.Presentation.UI;
 using Exercicio_14.Application.Services;
 using System.Reflection.Emit;
+using System.Globalization;
 
 namespace Exercicio_14.Presentation.Handlers
 {
@@ -28,8 +29,13 @@ namespace Exercicio_14.Presentation.Handlers
             gado.Leite = LerDouble("Leite");
             gado.Alimento = LerDouble("Alimento");
 
-            int mesNasc = LerInteiro("Mês de nascimento", 1, 12);
-            int anoNasc = LerInteiro("Ano de nascimento", 1900, DateTime.Now.Year);
+            string lerDataNascimento = LerString("dataNascimento");
+
+            if (DateTime.TryParseExact(lerDataNascimento, "dd/MM/yyyy", new CultureInfo("pt-BR"), DateTimeStyles.None, out DateTime dataNascimento))
+            {
+                gado.Idade = gado.CalcularIdade(dataNascimento);
+            }
+            //int anoNasc = LerInteiro("Ano de nascimento", 1900, DateTime.Now.Year);
 
             gado.DefinirAbate();
             gado.CalcularIdade(mesNasc, anoNasc, DateTime.Now.Month, DateTime.Now.Year);

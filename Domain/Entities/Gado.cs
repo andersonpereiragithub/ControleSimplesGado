@@ -25,9 +25,9 @@ namespace Exercicio_14.Domain.Entities
             }
         }
 
-        public void CalcularIdade(int mesNasc, int anoNasc, int mesAtual, int anoAtual)
+        public void CalcularIdade(DateTime dataNascimento)
         {
-            int diasDeVida = (((mesAtual * 30) + (anoAtual * 365)) - ((mesNasc * 30) + (anoNasc * 365)));
+           DataT
             Idade = diasDeVida / 365;
         }
     }
