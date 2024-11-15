@@ -13,6 +13,8 @@ namespace Exercicio_14.Application.Interfaces
         LeiteReportResult CalcularTotalLeite(bool posAbate = false);
         AlimentoReportResult CalcularTotalAlimento(bool posAbate = false);
         GadosAbatidosReportResult ContarGadoParaAbate();
+        int CalcularIdade(DateTime dataNascimento);
+
     }
 }
 

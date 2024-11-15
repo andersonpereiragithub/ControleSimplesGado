@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Exercicio_14.Domain.Entities
 {
@@ -8,6 +6,7 @@ namespace Exercicio_14.Domain.Entities
     {
         public int Codigo { get; set; }
         public string Nome { get; set; }
+        public DateTime DataNascimento { get; set; }
         public int Idade { get; set; }
         public double Leite { get; set; }
         public double Alimento { get; set; }
@@ -23,12 +22,6 @@ namespace Exercicio_14.Domain.Entities
             {
                 Abate = "NÃO";
             }
-        }
-
-        public void CalcularIdade(DateTime dataNascimento)
-        {
-           DataT
-            Idade = diasDeVida / 365;
         }
     }
 }

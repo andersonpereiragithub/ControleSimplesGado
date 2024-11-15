@@ -72,5 +72,17 @@ namespace Exercicio_14.Application.Services
             }
             return new GadosAbatidosReportResult(totalAbate, gadosAbatidos);
         }
+
+        public int CalcularIdade(DateTime dataNascimento)
+        {
+            DateTime hoje = DateTime.Today;
+            int idade = hoje.Year - dataNascimento.Year;
+
+            if (dataNascimento > hoje.AddYears(-idade))
+            {
+                idade--;
+            }
+            return idade;
+        }
     }
 }

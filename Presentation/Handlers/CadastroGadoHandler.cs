@@ -29,16 +29,22 @@ namespace Exercicio_14.Presentation.Handlers
             gado.Leite = LerDouble("Leite");
             gado.Alimento = LerDouble("Alimento");
 
-            string lerDataNascimento = LerString("dataNascimento");
-
-            if (DateTime.TryParseExact(lerDataNascimento, "dd/MM/yyyy", new CultureInfo("pt-BR"), DateTimeStyles.None, out DateTime dataNascimento))
+            string lerDataNascimento;
+            bool sair = false;
+            do
             {
-                gado.Idade = gado.CalcularIdade(dataNascimento);
-            }
-            //int anoNasc = LerInteiro("Ano de nascimento", 1900, DateTime.Now.Year);
+                lerDataNascimento = LerString("DataNascimento[dd/MM/yyy]: ");
 
+                if (DateTime.TryParseExact(lerDataNascimento, "dd/MM/yyyy", new CultureInfo("pt-BR"), DateTimeStyles.None, out DateTime dataNascimento))
+                {
+                    gado.Idade = _gadoService.CalcularIdade(dataNascimento);
+                    sair = true;
+                }
+                else { Console.WriteLine("Data Inválida! Use dd/MM/yyyy."); }
+            } while (sair == false);
+            
+            gado.DataNascimento = DateTime.Parse(lerDataNascimento);
             gado.DefinirAbate();
-            gado.CalcularIdade(mesNasc, anoNasc, DateTime.Now.Month, DateTime.Now.Year);
 
             return gado;
         }
@@ -108,12 +114,12 @@ namespace Exercicio_14.Presentation.Handlers
 
         public void CadastrarNovoGado()
         {
-            List<Gado> gados = CarregarGadosDeJson();  
-            Gado novoGado = ObterNovoGado();           
+            List<Gado> gados = CarregarGadosDeJson();
+            Gado novoGado = ObterNovoGado();
 
-            gados.Add(novoGado);                       
+            gados.Add(novoGado);
 
-            SalvarGadosEmJson(gados);                  
+            SalvarGadosEmJson(gados);
         }
 
         public void SalvarGadosEmJson(List<Gado> gados)
