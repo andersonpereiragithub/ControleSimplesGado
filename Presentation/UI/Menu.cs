@@ -27,6 +27,7 @@ namespace Exercicio_14.Presentation.UI
             acoesMenu = new Dictionary<char, Action>
             {
                 { (char)OpcaoMenu.CadastrarGado, InstanciarGados },
+                { (char)OpcaoMenu.DeletarGado, DeletarGados },
                 { (char)OpcaoMenu.ListarCadastros, _cadastroGadoHandler.ListarGados },
                 { (char)OpcaoMenu.RelatorioLeite, () => _cadastroGadoHandler.ImprimirRelatorioLeite(false) },
                 { (char)OpcaoMenu.RelatorioAlimento, () => _cadastroGadoHandler.ImprimirRelatorioAlimento(false) },
@@ -69,6 +70,8 @@ namespace Exercicio_14.Presentation.UI
             Console.Clear();
             Console.WriteLine("\n================= MENU =================\n");
             Console.WriteLine("(\u001b[31ma\u001b[0m) - Cadastrar Gado");
+            Console.WriteLine("(\u001b[31mb\u001b[0m) - Deletar Gado");
+            Console.WriteLine("(\u001b[31mc\u001b[0m) - Editar Gado");
             Console.WriteLine("      |-\u001b[33mImprimir Relatórios:\u001b[0m");
             Console.WriteLine("      |--(\u001b[31m1\u001b[0m) - Listar todos os Cadastros");
             Console.WriteLine("      |__(\u001b[31m2\u001b[0m) - Total de LEITE produzido");
@@ -85,5 +88,21 @@ namespace Exercicio_14.Presentation.UI
             Console.WriteLine($"Cadastro do gado:");
             _cadastroGadoHandler.CadastrarNovoGado();
         }
+        private void DeletarGados()
+        {
+            _cadastroGadoHandler.ListarGados();
+            try
+            {
+                Console.Write($"  \u001b[31mDeletar gado:\u001b[0m ");
+                string nomeGado = Console.ReadLine();
+                _cadastroGadoHandler.DeletarGado(nomeGado);
+                Console.WriteLine($" \u001b[32m[{nomeGado}] excluído com sucesso\u001b[0m");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }

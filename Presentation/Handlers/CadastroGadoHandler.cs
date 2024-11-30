@@ -42,7 +42,7 @@ namespace Exercicio_14.Presentation.Handlers
                 }
                 else { Console.WriteLine("Data Inválida! Use dd/MM/yyyy."); }
             } while (sair == false);
-            
+
             gado.DataNascimento = DateTime.Parse(lerDataNascimento);
             gado.DefinirAbate();
 
@@ -118,6 +118,23 @@ namespace Exercicio_14.Presentation.Handlers
             Gado novoGado = ObterNovoGado();
 
             gados.Add(novoGado);
+
+            SalvarGadosEmJson(gados);
+        }
+        public void DeletarGado(string nomeDeletar)
+        {
+            List<Gado> gados = CarregarGadosDeJson();
+
+            var gadoIsOnList = gados.Find(g => g.Nome == nomeDeletar);
+            
+            if (gadoIsOnList != null && gadoIsOnList.Abate != "NÃO")
+            {
+                gados.Remove(gadoIsOnList);
+            }
+            else
+            {
+                throw new Exception($"  \u001b[31m[{gadoIsOnList.Nome}] não está Classificado para ABATE!\u001b[0m"); 
+            }
 
             SalvarGadosEmJson(gados);
         }
