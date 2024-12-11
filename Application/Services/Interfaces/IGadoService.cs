@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Application.Services;
+﻿using Application.Services;
 using Exercicio_14.Domain.Entities;
-using EXERCICIO14.Application.Services;
+using System;
+using System.Collections.Generic;
 
-namespace Exercicio_14.Application.Interfaces
+namespace EXERCICIO14.Application.Services.Interfaces
 {
     public interface IGadoService
     {
-        void PreencherCampoAbate(Gado[] gado);
+        void PreencherCampoAbate(List<Gado> gado);
         LeiteReportResult CalcularTotalLeite(bool posAbate = false);
         AlimentoReportResult CalcularTotalAlimento(bool posAbate = false);
         GadosAbatidosReportResult ContarGadoParaAbate();

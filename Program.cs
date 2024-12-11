@@ -1,5 +1,5 @@
-﻿using Exercicio_14.Infrastructure.IOC;
-using Exercicio_14.Presentation.UI;
+﻿using Exercicio_14.Presentation.Menu;
+using Exercicio_14.Infrastructure.DI;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Exercicio_14

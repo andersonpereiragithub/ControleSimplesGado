@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.Json;
-using Exercicio_14.Application.Interfaces;
+﻿using EXERCICIO14.Application.Services.Interfaces;
+using EXERCICIO14.Presentation.Menu;
 using Exercicio_14.Domain.Entities;
-using EXERCICIO14.Presentation.UI;
-using Exercicio_14.Application.Services;
-using System.Reflection.Emit;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Text.Json;
+using System.IO;
+using System;
 
 namespace Exercicio_14.Presentation.Handlers
 {
@@ -49,7 +47,7 @@ namespace Exercicio_14.Presentation.Handlers
             return gado;
         }
 
-        private int LerInteiro(string campo, int min = int.MinValue, int max = int.MaxValue)
+        public int LerInteiro(string campo, int min = int.MinValue, int max = int.MaxValue)
         {
             int valor;
             while (true)
@@ -63,7 +61,7 @@ namespace Exercicio_14.Presentation.Handlers
             }
         }
 
-        private double LerDouble(string campo)
+        public double LerDouble(string campo)
         {
             double valor;
             while (true)
@@ -77,7 +75,7 @@ namespace Exercicio_14.Presentation.Handlers
             }
         }
 
-        private string LerString(string campo)
+        public string LerString(string campo)
         {
             Console.Write($"{campo}: ");
             return Console.ReadLine();
@@ -121,20 +119,29 @@ namespace Exercicio_14.Presentation.Handlers
 
             SalvarGadosEmJson(gados);
         }
+
+        public void EditarGado(List<Gado> gados)
+        {
+            SalvarGadosEmJson(gados);
+        }
+
         public void DeletarGado(string nomeDeletar)
         {
             List<Gado> gados = CarregarGadosDeJson();
 
-            var gadoIsOnList = gados.Find(g => g.Nome == nomeDeletar);
+            var gadoIsOnList = gados.Find(g => g.Nome.Equals(nomeDeletar, StringComparison.OrdinalIgnoreCase));
+
+            if (gadoIsOnList == null)
+            {
+                throw new Exception($"  \u001b[31m[{nomeDeletar}] não encontrado na lista.\u001b[0m");
+            }
+
+            if (gadoIsOnList.Abate == "NÃO")
+            {
+                throw new Exception($"  \u001b[31m[{nomeDeletar}] não está classificado para ABATE!\u001b[0m");
+            }
             
-            if (gadoIsOnList != null && gadoIsOnList.Abate != "NÃO")
-            {
-                gados.Remove(gadoIsOnList);
-            }
-            else
-            {
-                throw new Exception($"  \u001b[31m[{gadoIsOnList.Nome}] não está Classificado para ABATE!\u001b[0m"); 
-            }
+            gados.Remove(gadoIsOnList);
 
             SalvarGadosEmJson(gados);
         }

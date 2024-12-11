@@ -1,6 +1,5 @@
 ﻿using Exercicio_14.Domain.Entities;
 using System.Collections.Generic;
-using Exercicio_14.Application.Services;
 
 namespace Application.Services
 {

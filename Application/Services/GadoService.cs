@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Application.Services;
-using Exercicio_14.Application.Interfaces;
+﻿using Application.Services;
 using Exercicio_14.Domain.Entities;
 using Exercicio_14.Presentation.Handlers;
 using EXERCICIO14.Application.Services;
+using EXERCICIO14.Application.Services.Interfaces;
+using System;
+using System.Collections.Generic;
 
 namespace Exercicio_14.Application.Services
 {
     public class GadoService : IGadoService
     {
-        public void PreencherCampoAbate(Gado[] gado)
+        public void PreencherCampoAbate(List<Gado> gado)
         {
             foreach (var g in gado)
             {

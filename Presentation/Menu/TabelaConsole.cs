@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace EXERCICIO14.Presentation.UI
+namespace EXERCICIO14.Presentation.Menu
 {
     internal class TabelaConsole
     {
